@@ -1,6 +1,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
                   below is similarx to "max-width"
        */}
       <Show above="lg">
-        <GridItem area="aside">aside</GridItem>
+        <GridItem area="aside">
+          <GenreList></GenreList>
+        </GridItem>
       </Show>
 
       <GridItem area="main">
