@@ -1,4 +1,5 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
@@ -11,12 +12,12 @@ function App() {
              "aside main"`,
       }}
     >
-      <GridItem area="nav" bg="coral">
-        Nav
+      <GridItem area="nav">
+        <NavBar></NavBar>
       </GridItem>
       {/* 适配设备:大屏幕才展示 aside, 小屏幕隐藏
                   above is similar to "min-width"
-                  below is similar to "max-width"
+                  below is similarx to "max-width"
        */}
       <Show above="lg">
         <GridItem area="aside" bg="gold">
