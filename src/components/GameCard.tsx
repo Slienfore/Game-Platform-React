@@ -2,6 +2,7 @@ import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
 import type { Game } from "../hooks/useGames";
 import CriticScore from "./CriticScore";
 import PlatformIconList from "./PlatformIconList";
+import getCroppedImageUrl from "../services/image-url";
 
 interface Props {
   game: Game;
@@ -12,7 +13,7 @@ const GameCard = ({ game }: Props) => {
     <>
       <Card >
         {/* 图片 */}
-        <Image src={game.background_image}></Image>
+        <Image src={getCroppedImageUrl(game.background_image)}></Image>
 
         {/* 标题 */}
         <CardBody>
