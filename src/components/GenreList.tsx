@@ -1,18 +1,13 @@
-import {
-  HStack,
-  List,
-  ListItem,
-  Image,
-  Text,
-  Skeleton,
-  SkeletonText,
-  Box,
-} from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
+import { HStack, List, ListItem, Image, Button } from "@chakra-ui/react";
+import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import GenreSkeleton from "./GenreSkeleton";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data: genres, isLoading, error } = useGenres();
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
@@ -39,7 +34,14 @@ const GenreList = () => {
               boxSize="32px"
             ></Image>
 
-            <Text fontSize="lg">{genre.name}</Text>
+            {/* Filter Games by Genre */}
+            <Button
+              onClick={() => onSelectGenre(genre)}
+              fontSize="lg"
+              variant="link"
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}
