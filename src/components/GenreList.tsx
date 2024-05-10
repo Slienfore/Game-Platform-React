@@ -4,10 +4,11 @@ import getCroppedImageUrl from "../services/image-url";
 import GenreSkeleton from "./GenreSkeleton";
 
 interface Props {
+  selectedGenre: Genre | null;
   onSelectGenre: (genre: Genre) => void;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data: genres, isLoading, error } = useGenres();
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
@@ -20,25 +21,29 @@ const GenreList = ({ onSelectGenre }: Props) => {
       {/* loading skeleton */}
       {isLoading &&
         skeletons.map((skeleton) => (
-          <ListItem key={skeleton} paddingY="5px">
+          <ListItem key={skeleton} paddingY=".3125rem">
             <GenreSkeleton></GenreSkeleton>
           </ListItem>
         ))}
 
       {genres.map((genre) => (
-        <ListItem key={genre.id} paddingY="5px">
+        <ListItem key={genre.id} paddingY=".3125rem">
           <HStack>
             <Image
               src={getCroppedImageUrl(genre.image_background)}
               borderRadius={8}
-              boxSize="32px"
+              boxSize="2rem"
             ></Image>
 
             {/* Filter Games by Genre */}
             <Button
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               onClick={() => onSelectGenre(genre)}
               fontSize="lg"
               variant="link"
+              // 文本过长, button 显示不下
+              whiteSpace="normal"
+              textAlign="left"
             >
               {genre.name}
             </Button>
