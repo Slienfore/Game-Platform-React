@@ -17,14 +17,16 @@ const SearchInput = ({ onSearch }: Props) => {
         if (ref.current) onSearch(ref.current.value);
       }}
     >
+      {/* Add elements inside input */}
       <InputGroup>
+        {/* Add a left icon inside the input  */}
         <InputLeftElement children={<BsSearch />}></InputLeftElement>
 
         <Input
           ref={ref}
           borderRadius={20}
           placeholder="Search games..."
-          variant="filled"
+          variant="filled" // change the input appearance
         ></Input>
       </InputGroup>
     </form>

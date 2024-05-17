@@ -39,9 +39,11 @@ function App() {
         ></NavBar>
       </GridItem>
 
-      {/* 适配设备:大屏幕才展示 aside, 小屏幕隐藏
+      {/* Show: Show the children if the media query matches
+
+           适配设备: 大屏幕才展示 aside, 小屏幕隐藏
                   above is similar to "min-width"
-                  below is similarx to "max-width"
+                  below is similar to "max-width"
        */}
       <Show above="lg">
         <GridItem area="aside" paddingX="5px">
@@ -66,6 +68,7 @@ function App() {
                 }
               ></PlatformSelector>
             </Box>
+
             <SortSelector
               onSelectSortOrder={(sortOrder) =>
                 setGameQuery({ ...gameQuery, sortOrder })

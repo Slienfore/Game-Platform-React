@@ -52,6 +52,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre)}
                 fontSize="lg"
+                // change the visual style of the button
                 variant="link"
                 // 文本过长, button 显示不下
                 whiteSpace="normal"

@@ -1,9 +1,11 @@
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
 
+// Add the mode config
 const config: ThemeConfig = {
-  initialColorMode: "dark",
+  initialColorMode: "dark", // the color mode when user visit the page for the first time
 };
 
+// extend the theme to customise the default theme
 const theme = extendTheme({
   config,
   colors: {

@@ -9,10 +9,12 @@ interface FetchResponse<T> {
 
 const useData = <T>(
   endpoint: string,
-  requestConfig?: AxiosRequestConfig,
+  requestConfig?: AxiosRequestConfig, // request params
   dependencies?: any[] // every rely on this will recall the function to refresh data
 ) => {
+  // response data
   const [data, setData] = useState<T[]>([]);
+
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
@@ -32,12 +34,13 @@ const useData = <T>(
           setLoading(false);
         })
         .catch((err) => {
-          if (err instanceof CanceledError) return;
+          if (err instanceof CanceledError) return; // clean the canceled Error message
+
           setError(err.message);
           setLoading(false);
         });
 
-      return () => controller.abort();
+      return () => controller.abort(); // clean sideEffect func
     },
     dependencies ? [...dependencies] : []
   );
