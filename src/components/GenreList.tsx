@@ -11,11 +11,11 @@ import getCroppedImageUrl from "../services/image-url";
 import GenreSkeleton from "./GenreSkeleton";
 
 interface Props {
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
   onSelectGenre: (genre: Genre) => void;
 }
 
-const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenreList = ({ selectedGenreId, onSelectGenre }: Props) => {
   const { data: genres, isLoading, error } = useGenres();
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
@@ -52,9 +52,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
                 {/* Filter Games by Genre */}
                 <Button
-                  fontWeight={
-                    genre.id === selectedGenre?.id ? "bold" : "normal"
-                  }
+                  fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                   onClick={() => onSelectGenre(genre)}
                   fontSize="lg"
                   // change the visual style of the button
