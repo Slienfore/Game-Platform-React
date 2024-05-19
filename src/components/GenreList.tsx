@@ -25,7 +25,9 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
   return (
     <>
-      <Heading fontSize="2xl" marginBottom={3}>Genre</Heading>
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genre
+      </Heading>
 
       <List>
         {/* loading skeleton */}
@@ -36,33 +38,36 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
             </ListItem>
           ))}
 
-        {!isLoading && genres.map((genre) => (
-          <ListItem key={genre.id} paddingY=".3125rem">
-            <HStack>
-              <Image
-                src={getCroppedImageUrl(genre.image_background)}
-                // 图像保持长宽比例同时缩放来填充
-                objectFit="cover"
-                borderRadius={8}
-                boxSize="2rem"
-              ></Image>
+        {!isLoading &&
+          genres?.results.map((genre) => (
+            <ListItem key={genre.id} paddingY=".3125rem">
+              <HStack>
+                <Image
+                  src={getCroppedImageUrl(genre.image_background)}
+                  // 图像保持长宽比例同时缩放来填充
+                  objectFit="cover"
+                  borderRadius={8}
+                  boxSize="2rem"
+                ></Image>
 
-              {/* Filter Games by Genre */}
-              <Button
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-                onClick={() => onSelectGenre(genre)}
-                fontSize="lg"
-                // change the visual style of the button
-                variant="link"
-                // 文本过长, button 显示不下
-                whiteSpace="normal"
-                textAlign="left"
-              >
-                {genre.name}
-              </Button>
-            </HStack>
-          </ListItem>
-        ))}
+                {/* Filter Games by Genre */}
+                <Button
+                  fontWeight={
+                    genre.id === selectedGenre?.id ? "bold" : "normal"
+                  }
+                  onClick={() => onSelectGenre(genre)}
+                  fontSize="lg"
+                  // change the visual style of the button
+                  variant="link"
+                  // 文本过长, button 显示不下
+                  whiteSpace="normal"
+                  textAlign="left"
+                >
+                  {genre.name}
+                </Button>
+              </HStack>
+            </ListItem>
+          ))}
       </List>
     </>
   );
