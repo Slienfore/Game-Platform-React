@@ -37,10 +37,13 @@ const GameGrid = ({ gameQuery }: Props) => {
       // 双重取反
       hasMore={!!hasNextPage}
       loader={<Spinner />}
-      padding="10px"
     >
       {/* 响应式表格 小型设备: 1 个... */}
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        padding="10px"
+        spacing={6}
+      >
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>
