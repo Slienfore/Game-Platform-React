@@ -3,6 +3,7 @@ import axios, { AxiosRequestConfig } from "axios";
 export interface FetchResponse<T> {
   count: number;
   results: T[];
+  next: string | null;// 是否还有下一页
 }
 
 const axiosInstance = axios.create({
