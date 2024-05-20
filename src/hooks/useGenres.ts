@@ -16,7 +16,7 @@ const useGenres = () =>
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
     staleTime: 24 * (3600 * 1000), // expired after 24h
-    initialData: { count: genres.length, results: genres }, // set cache initialization
+    initialData: genres, // static data
   });
 
 export default useGenres;
