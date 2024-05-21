@@ -18,13 +18,17 @@ interface GameQueryStore {
 const useGameQueryStore = create<GameQueryStore>((set) => ({
   gameQuery: {},
   setGenreId: (genreId) =>
-    set((store) => ({ gameQuery: { genreId, ...store.gameQuery } })),
+    set((store) => ({
+      gameQuery: { ...store.gameQuery, genreId },
+    })),
 
   setPlatformId: (platformId) =>
-    set((store) => ({ gameQuery: { platformId, ...store.gameQuery } })),
+    set((store) => ({
+      gameQuery: { ...store.gameQuery, platformId },
+    })),
 
   setSortOrder: (sortOrder) =>
-    set((store) => ({ gameQuery: { sortOrder, ...store.gameQuery } })),
+    set((store) => ({ gameQuery: { ...store.gameQuery, sortOrder } })),
 
   // 搜索内容时候, 其它重置
   setSearchText: (searchText) => set({ gameQuery: { searchText } }),
