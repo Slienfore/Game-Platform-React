@@ -1,5 +1,23 @@
+import { useParams } from "react-router-dom";
+import useGame from "../hooks/useGame";
+import { Heading, Text, Spinner } from "@chakra-ui/react";
+
 const GameDetailPage = () => {
-  return <div>GameDetail</div>;
+  const { slug } = useParams();
+
+  const { data: game, isLoading, error } = useGame(slug!); // slug will not be undefined, the route will throw error if it is
+
+  if (isLoading) return <Spinner />;
+
+  if (error || !game) throw error;
+
+  return (
+    <>
+      <Heading>{game.name}</Heading>
+
+      <Text>{game.description_raw}</Text>
+    </>
+  );
 };
 
 export default GameDetailPage;

@@ -14,7 +14,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       // 游戏详情页面
       {
-        path: "games/:id",
+        path: "games/:slug",
         element: <GameDetailPage />,
       },
     ],

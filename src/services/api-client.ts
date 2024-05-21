@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from "axios";
 export interface FetchResponse<T> {
   count: number;
   results: T[];
-  next: string | null;// 是否还有下一页
+  next: string | null; // 是否还有下一页
 }
 
 const axiosInstance = axios.create({
@@ -24,6 +24,10 @@ class APIClient<T> {
     axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config) // config 方便进行携带query参数
       .then((res) => res.data);
+
+  // Get Single
+  get = (id: number | string) =>
+    axiosInstance.get<T>(this.endpoint + "/" + id).then((res) => res.data);
 }
 
 export default APIClient;
