@@ -1,4 +1,4 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { Box, HStack, Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 // import logo source
 import logo from "../assets/logo.webp";
@@ -10,8 +10,10 @@ const NavBar = () => {
     // HStack: used to stack elements in the horizontal direction
     <HStack justifyContent="space-between" padding="10px">
       <Link to="/">
-        {/* using the boxSize to change the size of the image */}
-        <Image src={logo} boxSize="60px" objectFit="cover"></Image>
+        {/* Link 无法被 Image 撑开 */}
+        <Box boxSize="60px">
+          <Image src={logo} boxSize="60px" />
+        </Box>
       </Link>
 
       <SearchInput></SearchInput>
